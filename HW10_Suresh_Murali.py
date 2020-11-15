@@ -212,6 +212,15 @@ class Repository:
 
                 p.add_row(row)
         print(p)
+                    
+    def major_pretty_table(self):
+        """Majors Pretty table print"""
+        p = PrettyTable(field_names=["Major", "Required Course", "Electives"])
+        for major in self._majors.values():
+
+            p.add_row(major.major_table())
+
+        print(p)
         
 def main():
     """ Main Function """
