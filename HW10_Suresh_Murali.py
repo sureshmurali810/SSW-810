@@ -81,6 +81,23 @@ class Major:
     def major_table(self):
 
         return[self._dept, self._required, self._electives]
+    
+    def remaining_required(self, courses):
+        completed_course = {course for course,
+                            grade in courses.items() if grade in {
+                             'A', 'A-', 'B', 'B-', 'C', 'C-'}}
+        # print(completed_course)
+        return self._required - completed_course
+
+    def remaining_electives(self, courses):
+        completed_course = {course for course,
+                            grade in courses.items() if grade in {
+                             'A', 'A-', 'B', 'B-', 'C', 'C-'}}
+        # print(completed_course)
+        if self._electives.intersection(completed_course):
+            return None
+        else:
+            return self._electives
                 
 
 
